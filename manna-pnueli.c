@@ -44,7 +44,7 @@ int main(void) {
                 printf("Soma: %d\n", soma);
                 elapsed_time = clock() - initial_time;
                 printf("Tempo decorrido: %ds\n\n", elapsed_time / CLOCKS_PER_SEC);
-                printf("Digite Ctrl + C para sair.\n");
+                printf("Digite Ctrl + C para sair.\n\n");
             }
         } else {
             // Vários Clientes
@@ -52,6 +52,7 @@ int main(void) {
                 while (respond != id) {
                     request = id;
                 }
+                printf("Cliente %d\n", id);
                 // Seção crítica:
                 local = soma;
                 sleep(1);
