@@ -1,3 +1,5 @@
+import java.util.concurrent.Semaphore;
+
 public class TrafficController {
    private final Semaphore semaphore = new Semaphore(1); 
     public void enterLeft() {
