@@ -1,27 +1,25 @@
 public class TrafficController {
-    private boolean isCarOnBridge = false;
-
-    public synchronized void enterLeft() throws InterruptedException {
-        while (isCarOnBridge) {
-            wait();
+   private final Semaphore semaphore = new Semaphore(1); 
+    public void enterLeft() {
+        
+        try {
+            semaphore.acquire();
+        } catch (InterruptedException e) {
+            System.out.println("InterruptedException - esquerda");
         }
-        isCarOnBridge = true;
     }
+    public void enterRight() {
+        try {
+            semaphore.acquire();
+        } catch (InterruptedException e) {
+            System.out.println("InterruptedException - direita");
 
-    public synchronized void enterRight() throws InterruptedException {
-        while (isCarOnBridge) {
-            wait();
         }
-        isCarOnBridge = true;
     }
-
-    public synchronized void leaveLeft() {
-        isCarOnBridge = false;
-        notifyAll();
+    public void leaveLeft() {
+        semaphore.release();
     }
-
-    public synchronized void leaveRight() {
-        isCarOnBridge = false;
-        notifyAll();
+    public void leaveRight() {
+        semaphore.release();
     }
 }
