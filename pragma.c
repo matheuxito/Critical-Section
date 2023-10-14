@@ -199,14 +199,14 @@ int main(){
     //printf("Tempo de execução trecho de computação das gerações: %f\n", stoP - starT);
     //fclose(arquivo);
     // printf("Quantidade de celulas vivas Geração %d: %d\n", GERACOES, quantidadeCelulasVivas(new_grid));
-    double starT = omp_get_wtime();
+    starT = omp_get_wtime();
     printf("Quantidade de celulas vivas Geração %d: %d\n", GERACOES, quantidadeCelulasVivasGlobalCritical(new_grid));
-    double stoP = omp_get_wtime();
+    stoP = omp_get_wtime();
     printf("Tempo de execução trecho de computação das gerações com CRITICAL: %f\n", stoP - starT);
 
-    double starT = omp_get_wtime();
+    starT = omp_get_wtime();
     printf("Quantidade de celulas vivas Geração %d: %d\n", GERACOES, quantidadeCelulasVivasGlobalReduction(new_grid));
-    double stoP = omp_get_wtime();
+    stoP = omp_get_wtime();
     printf("Tempo de execução trecho de computação das gerações com REDUCTION: %f\n", stoP - starT);
 
 
